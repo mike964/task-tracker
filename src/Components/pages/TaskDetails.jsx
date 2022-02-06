@@ -7,7 +7,7 @@ import Button from '../Button';
 const TaskDetails = () => {
   const [ loading, setLoading ] = useState( true )
   const [ task, setTask ] = useState( {} )
-  const [ error, setError ] = useState( null )
+  // const [ error, setError ] = useState( null )
 
   const params = useParams()
   const navigate = useNavigate()
@@ -27,13 +27,13 @@ const TaskDetails = () => {
       setLoading( false )
     }
     fetchTask()
-  } );
+  }, [ params, navigate ] );
 
 
-  if ( error ) {
-    // * use <Navigate /> instaed of <Redirect /> in Router v6
-    <Navigate to='/' />
-  }
+  // if ( error ) {
+  //   // * use <Navigate /> instaed of <Redirect /> in Router v6
+  //   <Navigate to='/' />
+  // }
 
   //-----------------------------------------------------
   return loading ? <h3>Loading...</h3> : <div>
