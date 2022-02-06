@@ -1,7 +1,26 @@
-import React from 'react';
 
-const Button = ({color, text}) => {
-  return <button className='btn' style={{backgroundColor: color}}  >{text}</button>
-};
+import PropTypes from 'prop-types'
 
-export default Button;
+const Button = ( { color, text, onClick } ) => {
+  return (
+    <button
+      onClick={ onClick }
+      style={ { backgroundColor: color } }
+      className='btn'
+    >
+      { text }
+    </button>
+  )
+}
+
+Button.defaultProps = {
+  color: 'steelblue',
+}
+
+Button.propTypes = {
+  text: PropTypes.string,
+  color: PropTypes.string,
+  onClick: PropTypes.func,
+}
+
+export default Button
