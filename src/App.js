@@ -6,8 +6,9 @@ import Footer from './components/Footer'
 import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 import About from './components/pages/About'
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Contact from './components/pages/Contact';
+import TaskDetails from './components/pages/TaskDetails';
 
 
 const App = () => {
@@ -98,10 +99,10 @@ const App = () => {
           onAdd={ () => setShowAddTask( !showAddTask ) }
           showAdd={ showAddTask }
         /> 
-        <Switch>
+        <Routes>
           <Route
-            path='/' exact
-            render={ ( props ) =>
+            path='/'
+            element={ 
               <>
                 { showAddTask && <AddTask onAdd={ addTask } /> }
                 { tasks.length > 0 ? (
@@ -116,9 +117,10 @@ const App = () => {
               </>
             }
           />
-          <Route path='/about' component={ About} />
-          <Route path='/contact' component={Contact } /> 
-          </Switch>
+          <Route path='/about' element={ <About/>} />
+          <Route path='/contact' element={<Contact /> } /> 
+          <Route path='/task/:id' element={<TaskDetails /> } /> 
+          </Routes>
         <Footer />
       </div>
     </Router>
